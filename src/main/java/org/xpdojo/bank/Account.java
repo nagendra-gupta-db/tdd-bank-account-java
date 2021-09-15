@@ -17,4 +17,10 @@ public class Account {
         }
         balance -= withdraw;
     }
+
+    public void transfer(Account receiver, Double transferAmount) {
+
+        this.balance -= transferAmount;
+        receiver.balance += transferAmount;
+    }
 }

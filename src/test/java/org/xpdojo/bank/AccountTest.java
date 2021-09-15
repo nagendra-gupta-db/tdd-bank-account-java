@@ -53,4 +53,20 @@ public class AccountTest {
         assertThatThrownBy(() -> account.withdraw(50.0)).isInstanceOf(IllegalArgumentException.class).hasMessage("Balance cannot be negative after withdraw.");
 
     }
+
+    @Test
+    public void transferAmountWithSufficientBalance() {
+
+        Account sender = new Account();
+
+        sender.deposit(100.0);
+
+        Assertions.assertEquals(100.0, sender.balance);
+
+        Account receiver = new Account();
+        sender.transfer(receiver, 50.0);
+
+        Assertions.assertEquals(50.0, receiver.balance);
+
+    }
 }
