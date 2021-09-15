@@ -24,4 +24,25 @@ public class AccountTest {
 
         Assertions.assertEquals(0.0, account.balance);
     }
+
+    @Test
+    public void depositAmountMultipleTimesToIncreaseTheBalance() {
+        Account account = new Account();
+
+        account.deposit(50.0);
+        Assertions.assertEquals(50.0, account.balance);
+
+        account.deposit(100.0);
+        Assertions.assertEquals(150.0, account.balance);
+    }
+
+    @Test
+    public void withdrawAmountToDecreaseTheBalance() {
+
+        Account account = new Account();
+
+        account.withdraw(50.0);
+
+        Assertions.assertEquals(-50, account.balance);
+    }
 }

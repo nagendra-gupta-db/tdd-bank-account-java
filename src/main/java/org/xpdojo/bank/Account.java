@@ -9,4 +9,9 @@ public class Account {
 
         balance += deposit;
     }
+
+    public void withdraw(double withdraw) throws IllegalArgumentException {
+
+        balance -= withdraw;
+    }
 }
