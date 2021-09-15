@@ -16,4 +16,12 @@ public class AccountTest {
 
         Assertions.assertEquals(100.0, account.balance);
     }
+
+    @Test
+    public void checkInitialBalanceIsZero() {
+
+        Account account = new Account();
+
+        Assertions.assertEquals(0.0, account.balance);
+    }
 }
