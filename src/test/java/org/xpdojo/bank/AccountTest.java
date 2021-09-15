@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class AccountTest {
 
@@ -40,9 +40,17 @@ public class AccountTest {
     public void withdrawAmountToDecreaseTheBalance() {
 
         Account account = new Account();
-
+        account.deposit(100.0);
         account.withdraw(50.0);
 
-        Assertions.assertEquals(-50, account.balance);
+        Assertions.assertEquals(50.0, account.balance);
+    }
+
+    @Test
+    public void withdrawAmountToDecreaseTheBalanceBelowZero() {
+
+        Account account = new Account();
+        assertThatThrownBy(() -> account.withdraw(50.0)).isInstanceOf(IllegalArgumentException.class).hasMessage("Balance cannot be negative after withdraw.");
+
     }
 }
