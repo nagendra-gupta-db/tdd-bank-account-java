@@ -20,6 +20,10 @@ public class Account {
 
     public void transfer(Account receiver, Double transferAmount) {
 
+        double balanceAfterTransfer = balance - transferAmount;
+        if( balanceAfterTransfer < 0 ) {
+            throw new IllegalArgumentException("Balance cannot be negative after transfer.");
+        }
         this.balance -= transferAmount;
         receiver.balance += transferAmount;
     }

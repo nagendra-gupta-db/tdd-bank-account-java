@@ -55,6 +55,15 @@ public class AccountTest {
     }
 
     @Test
+    public void transferAmountWhenTheBalanceBelowZero() {
+
+        Account sender = new Account();
+        Account receiver = new Account();
+        assertThatThrownBy(() -> sender.transfer(receiver,50.0)).isInstanceOf(IllegalArgumentException.class).hasMessage("Balance cannot be negative after transfer.");
+
+    }
+
+    @Test
     public void transferAmountWithSufficientBalance() {
 
         Account sender = new Account();
